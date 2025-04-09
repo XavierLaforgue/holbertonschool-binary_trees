@@ -9,7 +9,7 @@
 */
 int main(void)
 {
-	binary_tree_t *root;
+	binary_tree_t *root, *node_deleted;
 	int full;
 
 	root = binary_tree_node(NULL, 98);
@@ -26,5 +26,12 @@ int main(void)
 	printf("Is %d full: %d\n", root->left->n, full);
 	full = binary_tree_is_full(root->right);
 	printf("Is %d full: %d\n", root->right->n, full);
+	node_deleted = root->right->right;
+	printf("node to be deleted: %i\n", node_deleted->n);
+	binary_tree_delete(node_deleted);
+	binary_tree_print(root);
+	full = binary_tree_is_full(root);
+	printf("Is %d full: %d\n", root->n, full);
+
 	return (0);
 }
